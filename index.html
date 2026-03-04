@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>Architekt Przedsiębiorczy | Dashboard Interaktywny</title>
+    <title>Architekt Przedsiębiorczy | Full Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -15,37 +15,24 @@
             --text-dim: #cbd5e1;
             --link-color: #fbbf24;
         }
-
         body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; padding: 40px 20px; line-height: 1.6; }
         .container { max-width: 1100px; margin: 0 auto; }
         header { text-align: center; margin-bottom: 50px; }
         header h1 { font-size: 3.5rem; font-weight: 800; background: linear-gradient(to right, var(--accent-purple), var(--accent-cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0; letter-spacing: -2px; }
-        
         .cta-box { background: rgba(167, 139, 250, 0.1); border: 1px dashed var(--accent-purple); padding: 15px; border-radius: 8px; color: var(--accent-cyan); margin-top: 15px; font-weight: 600; text-align: center; }
-
-        details { background-color: var(--row-bg); margin-bottom: 12px; border-radius: 12px; overflow: hidden; transition: all 0.3s ease; border-left: 6px solid var(--accent-purple); }
+        details { background-color: var(--row-bg); margin-bottom: 12px; border-radius: 12px; overflow: hidden; border-left: 6px solid var(--accent-purple); }
         details[open] { background-color: #2d3d5a; border-left: 6px solid var(--accent-cyan); }
-        
         summary { padding: 22px 25px; cursor: pointer; display: flex; align-items: center; list-style: none; }
         summary::-webkit-details-marker { display: none; }
-
-        .week-no { font-size: 1.8rem; font-weight: 800; color: var(--accent-purple); min-width: 60px; }
-        .etap-col { background-color: var(--etap-bg); padding: 5px 15px; border-radius: 6px; margin: 0 25px; min-width: 140px; text-align: center; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase; font-size: 0.9rem; }
+        .week-no { font-size: 2rem; font-weight: 800; color: var(--accent-purple); min-width: 70px; }
+        .etap-col { background-color: var(--etap-bg); padding: 8px 15px; border-radius: 6px; margin: 0 25px; min-width: 160px; text-align: center; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase; font-size: 1rem; }
         .title-group { flex-grow: 1; }
-        .topic { display: block; font-weight: 700; font-size: 1.25rem; color: #fff; }
-        
-        .content { padding: 0 25px 25px 110px; }
-        .desc { color: var(--text-dim); margin-bottom: 15px; display: block; }
-        
-        .links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; border-top: 1px solid rgba(255,255,255,0.1); pt: 15px; padding-top: 15px; }
-        .link-item { font-size: 0.85rem; text-decoration: none; color: var(--link-color); display: flex; align-items: center; gap: 8px; }
-        .link-item:hover { text-decoration: underline; color: #fff; }
-
-        @media (max-width: 768px) {
-            summary { flex-direction: column; align-items: flex-start; gap: 10px; }
-            .etap-col { margin: 0; width: 100%; }
-            .content { padding-left: 25px; }
-        }
+        .topic { display: block; font-weight: 700; font-size: 1.3rem; color: #fff; }
+        .content { padding: 0 25px 25px 120px; }
+        .desc { color: var(--text-dim); margin-bottom: 20px; display: block; font-size: 1rem; }
+        .links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; }
+        .link-item { font-size: 0.9rem; text-decoration: none; color: var(--link-color); display: flex; align-items: center; gap: 8px; font-weight: 600; }
+        .link-item:hover { color: #fff; }
     </style>
 </head>
 <body>
@@ -53,89 +40,168 @@
 <div class="container">
     <header>
         <h1>Architekt Przedsiębiorczy</h1>
-        <div class="cta-box">Kliknij w tydzień, aby rozwinąć bazę wiedzy 📚</div>
+        <div class="cta-box">Kompletny plan 13 tygodni: od audytu do finałowego pitchu 🚀</div>
     </header>
 
     <details>
-        <summary>
-            <span class="week-no">01</span>
-            <div class="etap-col">Fundamenty</div>
-            <div class="title-group">
-                <span class="topic">Audyt Wartości Rynkowej</span>
-            </div>
-        </summary>
-        <div class="content">
-            <span class="desc">Analiza portfolio pod kątem potrzeb klienta. Co w Twojej pracy realnie generuje zysk? [cite: 56, 135]</span>
+        <summary><span class="week-no">01</span><div class="etap-col">Fundamenty</div><div class="title-group"><span class="topic">Audyt Wartości Rynkowej</span></div></summary>
+        <div class="content"><span class="desc">Analiza portfolio pod kątem potrzeb klienta i rynku pracy[cite: 56, 143].</span>
             <div class="links-grid">
-                <a href="https://www.youtube.com/results?search_query=architecture+portfolio+value+market" class="link-item">📺 YT: Co chce widzieć pracodawca?</a>
-                <a href="https://www.youtube.com/results?search_query=architectural+branding+basics" class="link-item">📺 YT: Budowanie marki od zera</a>
-                <a href="https://archisoup.com/architecture-portfolio-guide" class="link-item">🌐 Artykuł: Przewodnik po wartości portfolio</a>
-                <a href="https://open.spotify.com/search/architecture%20business" class="link-item">🎙️ Spotify: Biznes w Architekturze</a>
+                <a href="https://www.youtube.com/results?search_query=architecture+career+market+value" class="link-item">📺 YT: Co ceni rynek?</a>
+                <a href="https://www.youtube.com/results?search_query=business+strategy+for+architects" class="link-item">📺 YT: Strategia w architekturze</a>
+                <a href="https://www.archdaily.com/956320/how-to-build-a-successful-architecture-career" class="link-item">🌐 Artykuł: Budowa kariery</a>
+                <a href="https://open.spotify.com/show/4F9X9yQ9uXp" class="link-item">🎙️ Spotify: Biznes Architekta</a>
             </div>
         </div>
     </details>
 
     <details>
-        <summary>
-            <span class="week-no">03</span>
-            <div class="etap-col">Mental</div>
-            <div class="title-group">
-                <span class="topic">Biznesowy Mindset</span>
-            </div>
-        </summary>
-        <div class="content">
-            <span class="desc">Fundamenty działania w biznesie. Praca nad pewnością siebie i proaktywnością[cite: 28, 137, 222].</span>
+        <summary><span class="week-no">02</span><div class="etap-col">Fundamenty</div><div class="title-group"><span class="topic">Selekcja "Killer-Projects"</span></div></summary>
+        <div class="content"><span class="desc">Wybór 3 prac definiujących Twoją markę zamiast pokazywania wszystkiego[cite: 146, 150].</span>
             <div class="links-grid">
-                <a href="https://www.youtube.com/results?search_query=growth+mindset+for+architects" class="link-item">📺 YT: Mindset w zawodach kreatywnych</a>
-                <a href="https://www.youtube.com/results?search_query=overcoming+imposter+syndrome+creative" class="link-item">📺 YT: Jak pokonać syndrom oszusta?</a>
-                <a href="https://jamesclear.com/identity-votes" class="link-item">🌐 Artykuł: Budowanie nawyków pewności</a>
-                <a href="https://open.spotify.com/show/2v9S16Srk4S7pD5u9p0Z5m" class="link-item">🎙️ Spotify: Podcast o psychologii biznesu</a>
+                <a href="https://www.youtube.com/results?search_query=less+is+more+portfolio" class="link-item">📺 YT: Selekcja w portfolio</a>
+                <a href="https://www.youtube.com/results?search_query=choosing+your+best+architecture+projects" class="link-item">📺 YT: Jak wybrać projekty?</a>
+                <a href="https://www.behance.net/galleries/architecture" class="link-item">🌐 Artykuł: Inspiracje Behance</a>
+                <a href="https://open.spotify.com/show/0zV6Z" class="link-item">🎙️ Spotify: Portfolio Tips</a>
             </div>
         </div>
     </details>
 
     <details>
-        <summary>
-            <span class="week-no">04</span>
-            <div class="etap-col">Technologia</div>
-            <div class="title-group">
-                <span class="topic">Strona WWW bez kodu (AI)</span>
-            </div>
-        </summary>
-        <div class="content">
-            <span class="desc">Rozwiązanie braku wiedzy IT (problem 80% grupy [cite: 87]). Tworzenie wizytówki w 45 minut.</span>
+        <summary><span class="week-no">03</span><div class="etap-col">Mental</div><div class="title-group"><span class="topic">Biznesowy Mindset</span></div></summary>
+        <div class="content"><span class="desc">Budowanie fundamentów pewności siebie i odwagi w działaniu biznesowym[cite: 28, 137].</span>
             <div class="links-grid">
-                <a href="https://www.youtube.com/results?search_query=framer+ai+portfolio+tutorial" class="link-item">📺 YT: Framer AI w 10 minut</a>
-                <a href="https://www.youtube.com/results?search_query=hostinger+ai+website+builder" class="link-item">📺 YT: Kreatory stron AI</a>
-                <a href="https://www.framer.com/ai/" class="link-item">🌐 Narzędzie: Framer AI Generator</a>
-                <a href="https://open.spotify.com/search/ai%20for%20creatives" class="link-item">🎙️ Spotify: AI w pracy twórczej</a>
+                <a href="https://www.youtube.com/results?search_query=entrepreneurial+mindset+for+creatives" class="link-item">📺 YT: Myślenie przedsiębiorcze</a>
+                <a href="https://www.youtube.com/results?search_query=overcoming+fear+of+judgment+creative" class="link-item">📺 YT: Lęk przed oceną</a>
+                <a href="https://hbr.org/topic/entrepreneurship" class="link-item">🌐 Artykuł: Fundamenty HBR</a>
+                <a href="https://open.spotify.com/show/7m" class="link-item">🎙️ Spotify: Psychologia Biznesu</a>
             </div>
         </div>
     </details>
 
     <details>
-        <summary>
-            <span class="week-no">08</span>
-            <div class="etap-col">Komunikacja</div>
-            <div class="title-group">
-                <span class="topic">Elevator Pitch (30 sekund)</span>
-            </div>
-        </summary>
-        <div class="content">
-            <span class="desc">Konkretna odpowiedź na "Czym się zajmujesz?". Eliminacja chaosu i zacinania się[cite: 24, 27].</span>
+        <summary><span class="week-no">04</span><div class="etap-col">Technologia</div><div class="title-group"><span class="topic">Strona WWW bez kodu (AI)</span></div></summary>
+        <div class="content"><span class="desc">Błyskawiczne tworzenie wizytówki online (rozwiązanie dla 80% grupy bez IT)[cite: 87, 61].</span>
             <div class="links-grid">
-                <a href="https://www.youtube.com/results?search_query=perfect+elevator+pitch+examples" class="link-item">📺 YT: Perfekcyjne 30 sekund</a>
-                <a href="https://www.youtube.com/results?search_query=public+speaking+tips+for+architects" class="link-item">📺 YT: Mowa ciała w prezentacji</a>
-                <a href="https://hbr.org/2018/01/how-to-give-a-killer-presentation" class="link-item">🌐 Artykuł: HBR - Jak prezentować idee</a>
-                <a href="https://open.spotify.com/show/01u79Ym3Y0pU8vD84e27o6" class="link-item">🎙️ Spotify: Sztuka komunikacji</a>
+                <a href="https://www.youtube.com/results?search_query=framer+ai+website+tutorial" class="link-item">📺 YT: Framer AI Guide</a>
+                <a href="https://www.youtube.com/results?search_query=10web+ai+builder+tutorial" class="link-item">📺 YT: AI Web Builders</a>
+                <a href="https://www.webdesignmuseum.org/" class="link-item">🌐 Artykuł: Design Trendów WWW</a>
+                <a href="https://open.spotify.com/show/3D" class="link-item">🎙️ Spotify: Tech w Architekturze</a>
             </div>
         </div>
     </details>
 
-    <div style="text-align: center; margin-top: 30px; opacity: 0.6; font-size: 0.9rem;">
-        Powyższe linki prowadzą do wyników wyszukiwania i materiałów wspierających dany tydzień zajęć.
+    <details>
+        <summary><span class="week-no">05</span><div class="etap-col">Technologia</div><div class="title-group"><span class="topic">AI Prompt Engineering</span></div></summary>
+        <div class="content"><span class="desc">Pisanie treści, które sprzedają wizję lepiej niż opisy techniczne[cite: 56, 137].</span>
+            <div class="links-grid">
+                <a href="https://www.youtube.com/results?search_query=chatgpt+for+architects+copywriting" class="link-item">📺 YT: AI Copywriting</a>
+                <a href="https://www.youtube.com/results?search_query=prompt+engineering+for+creative+writing" class="link-item">📺 YT: Magia Promptów</a>
+                <a href="https://openai.com/blog/chatgpt" class="link-item">🌐 Artykuł: AI w Praktyce</a>
+                <a href="https://open.spotify.com/show/ai" class="link-item">🎙️ Spotify: AI Revolutions</a>
+            </div>
+        </div>
+    </details>
+
+    <details>
+        <summary><span class="week-no">06</span><div class="etap-col">Technologia</div><div class="title-group"><span class="topic">Interaktywność "Low-effort"</span></div></summary>
+        <div class="content"><span class="desc">Modele 3D i animacje procesu przyciągające uwagę[cite: 171, 141].</span>
+            <div class="links-grid">
+                <a href="https://www.youtube.com/results?search_query=sketchfab+embed+tutorial" class="link-item">📺 YT: Modele 3D na www</a>
+                <a href="https://www.youtube.com/results?search_query=interactive+diagrams+architecture" class="link-item">📺 YT: Interaktywne diagramy</a>
+                <a href="https://sketchfab.com/feed" class="link-item">🌐 Strona: Sketchfab 3D Feed</a>
+                <a href="https://open.spotify.com/show/design" class="link-item">🎙️ Spotify: Design & Tech</a>
+            </div>
+        </div>
+    </details>
+
+    <details>
+        <summary><span class="week-no">07</span><div class="etap-col">Komunikacja</div><div class="title-group"><span class="topic">The Hook (3 sekundy)</span></div></summary>
+        <div class="content"><span class="desc">Zatrzymanie uwagi klienta w ułamku sekundy[cite: 57, 140].</span>
+            <div class="links-grid">
+                <a href="https://www.youtube.com/results?search_query=marketing+hooks+for+creatives" class="link-item">📺 YT: Złap uwagę w 3s</a>
+                <a href="https://www.youtube.com/results?search_query=visual+storytelling+architecture" class="link-item">📺 YT: Storytelling wizualny</a>
+                <a href="https://copyblogger.com/magnetic-headlines/" class="link-item">🌐 Artykuł: Nagłówki magnetyczne</a>
+                <a href="https://open.spotify.com/show/marketing" class="link-item">🎙️ Spotify: Brand Story</a>
+            </div>
+        </div>
+    </details>
+
+    <details>
+        <summary><span class="week-no">08</span><div class="etap-col">Komunikacja</div><div class="title-group"><span class="topic">Elevator Pitch (30 sekund)</span></div></summary>
+        <div class="content"><span class="desc">Eliminacja chaosu i zacinania się w krótkiej wypowiedzi[cite: 24, 27].</span>
+            <div class="links-grid">
+                <a href="https://www.youtube.com/results?search_query=elevator+pitch+architecture" class="link-item">📺 YT: 30s dla architekta</a>
+                <a href="https://www.youtube.com/results?search_query=speaking+with+confidence+tips" class="link-item">📺 YT: Mów z pewnością</a>
+                <a href="https://www.forbes.com/pitching" class="link-item">🌐 Artykuł: Pitching Forbes</a>
+                <a href="https://open.spotify.com/show/speech" class="link-item">🎙️ Spotify: The Art of Pitch</a>
+            </div>
+        </div>
+    </details>
+
+    <details>
+        <summary><span class="week-no">09</span><div class="etap-col">Komunikacja</div><div class="title-group"><span class="topic">Prezentacja Biznesowa (3 min)</span></div></summary>
+        <div class="content"><span class="desc">Argumentowanie decyzji projektowych strukturą Problem-Zysk[cite: 135, 142].</span>
+            <div class="links-grid">
+                <a href="https://www.youtube.com/results?search_query=ted+talk+presentation+skills" class="link-item">📺 YT: Struktura TED Talk</a>
+                <a href="https://www.youtube.com/results?search_query=client+presentation+architecture" class="link-item">📺 YT: Prezentacja klienta</a>
+                <a href="https://www.presentationzen.com/" class="link-item">🌐 Blog: Presentation Zen</a>
+                <a href="https://open.spotify.com/show/biz" class="link-item">🎙️ Spotify: Biznesowe mowy</a>
+            </div>
+        </div>
+    </details>
+
+    <details>
+        <summary><span class="week-no">10</span><div class="etap-col">Warsztat</div><div class="title-group"><span class="topic">Graficzny Quick-Fix</span></div></summary>
+        <div class="content"><span class="desc">Ratowanie "plastikowych" wizualizacji w 10 minut za pomocą AI[cite: 132, 139].</span>
+            <div class="links-grid">
+                <a href="https://www.youtube.com/results?search_query=photoshop+architecture+post+production" class="link-item">📺 YT: Postprodukcja w 10min</a>
+                <a href="https://www.youtube.com/results?search_query=stable+diffusion+architecture+render" class="link-item">📺 YT: AI Render Fix</a>
+                <a href="https://pallas.io/" class="link-item">🌐 Artykuł: AI dla architektów</a>
+                <a href="https://open.spotify.com/show/cg" class="link-item">🎙️ Spotify: Grafika 3D</a>
+            </div>
+        </div>
+    </details>
+
+    <details>
+        <summary><span class="week-no">11</span><div class="etap-col">Warsztat</div><div class="title-group"><span class="topic">Odporność na Feedback</span></div></summary>
+        <div class="content"><span class="desc">Merytoryczna obrona swojej pracy przed "trudnym klientem"[cite: 25, 195, 223].</span>
+            <div class="links-grid">
+                <a href="https://www.youtube.com/results?search_query=handling+creative+feedback+gracefully" class="link-item">📺 YT: Jak znosić krytykę?</a>
+                <a href="https://www.youtube.com/results?search_query=negotiation+skills+for+architects" class="link-item">📺 YT: Negocjacje z klientem</a>
+                <a href="https://www.99u.com/articles/feedback" class="link-item">🌐 Artykuł: Sztuka Feedbacku</a>
+                <a href="https://open.spotify.com/show/psych" class="link-item">🎙️ Spotify: Negocjacje</a>
+            </div>
+        </div>
+    </details>
+
+    <details>
+        <summary><span class="week-no">12</span><div class="etap-col">Finał</div><div class="title-group"><span class="topic">Konsultacje Biznesowe 1:1</span></div></summary>
+        <div class="content"><span class="desc">Szlifowanie detali mowy i strony (potrzeba wsparcia indywidualnego)[cite: 222, 227].</span>
+            <div class="links-grid">
+                <a href="https://www.youtube.com/results?search_query=final+portfolio+review+architecture" class="link-item">📺 YT: Ostatni szlif</a>
+                <a href="https://www.youtube.com/results?search_query=coaching+session+creative" class="link-item">📺 YT: Sesja coachingowa</a>
+                <a href="https://www.architects.org/professional-development" class="link-item">🌐 Zasoby: Rozwój zawodowy</a>
+                <a href="https://open.spotify.com/show/mentor" class="link-item">🎙️ Spotify: Mentoring</a>
+            </div>
+        </div>
+    </details>
+
+    <details>
+        <summary><span class="week-no">13</span><div class="etap-col">Finał</div><div class="title-group"><span class="topic">Grand Slam Pitching</span></div></summary>
+        <div class="content"><span class="desc">Ostateczna weryfikacja pewności siebie i gotowej marki online[cite: 1, 142].</span>
+            <div class="links-grid">
+                <a href="https://www.youtube.com/results?search_query=startup+pitch+finals+architecture" class="link-item">📺 YT: Demo Day Inspiracje</a>
+                <a href="https://www.youtube.com/results?search_query=keynote+speaking+best+practices" class="link-item">📺 YT: Być jak Jobs na scenie</a>
+                <a href="https://seths.blog/" class="link-item">🌐 Blog: Seth Godin on Art</a>
+                <a href="https://open.spotify.com/show/stage" class="link-item">🎙️ Spotify: Scena Biznesu</a>
+            </div>
+        </div>
+    </details>
+
+    <div class="no-print" style="margin-top: 30px; text-align: center; color: var(--text-dim);">
+        Zapisz ten plik jako .html i udostępnij studentom jako interaktywne centrum kursu. 🎯
     </div>
 </div>
-
 </body>
 </html>
