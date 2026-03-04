@@ -2,129 +2,50 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>Architekt Przedsiębiorczy | Dashboard</title>
+    <title>Architekt Przedsiębiorczy | Dashboard Interaktywny</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-dark: #0f172a;
-            --row-bg: #222f44; /* Nieco rozjaśnione paski */
-            --etap-bg: #2a3a54; /* Delikatnie inny kolor dla kolumny Etap */
-            --accent-purple: #a78bfa; /* Jaśniejszy fiolet dla lepszej czytelności */
+            --row-bg: #222f44;
+            --etap-bg: #2a3a54;
+            --accent-purple: #a78bfa;
             --accent-cyan: #22d3ee;
             --text-main: #f8fafc;
             --text-dim: #cbd5e1;
+            --link-color: #fbbf24;
         }
 
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            margin: 0;
-            padding: 40px 20px;
-            line-height: 1.6;
+        body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; padding: 40px 20px; line-height: 1.6; }
+        .container { max-width: 1100px; margin: 0 auto; }
+        header { text-align: center; margin-bottom: 50px; }
+        header h1 { font-size: 3.5rem; font-weight: 800; background: linear-gradient(to right, var(--accent-purple), var(--accent-cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0; letter-spacing: -2px; }
+        
+        .cta-box { background: rgba(167, 139, 250, 0.1); border: 1px dashed var(--accent-purple); padding: 15px; border-radius: 8px; color: var(--accent-cyan); margin-top: 15px; font-weight: 600; text-align: center; }
+
+        details { background-color: var(--row-bg); margin-bottom: 12px; border-radius: 12px; overflow: hidden; transition: all 0.3s ease; border-left: 6px solid var(--accent-purple); }
+        details[open] { background-color: #2d3d5a; border-left: 6px solid var(--accent-cyan); }
+        
+        summary { padding: 22px 25px; cursor: pointer; display: flex; align-items: center; list-style: none; }
+        summary::-webkit-details-marker { display: none; }
+
+        .week-no { font-size: 1.8rem; font-weight: 800; color: var(--accent-purple); min-width: 60px; }
+        .etap-col { background-color: var(--etap-bg); padding: 5px 15px; border-radius: 6px; margin: 0 25px; min-width: 140px; text-align: center; font-weight: 700; color: var(--accent-cyan); text-transform: uppercase; font-size: 0.9rem; }
+        .title-group { flex-grow: 1; }
+        .topic { display: block; font-weight: 700; font-size: 1.25rem; color: #fff; }
+        
+        .content { padding: 0 25px 25px 110px; }
+        .desc { color: var(--text-dim); margin-bottom: 15px; display: block; }
+        
+        .links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; border-top: 1px solid rgba(255,255,255,0.1); pt: 15px; padding-top: 15px; }
+        .link-item { font-size: 0.85rem; text-decoration: none; color: var(--link-color); display: flex; align-items: center; gap: 8px; }
+        .link-item:hover { text-decoration: underline; color: #fff; }
+
+        @media (max-width: 768px) {
+            summary { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .etap-col { margin: 0; width: 100%; }
+            .content { padding-left: 25px; }
         }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        header h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            background: linear-gradient(to right, var(--accent-purple), var(--accent-cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin: 0;
-            letter-spacing: -2px;
-        }
-
-        .cta-box {
-            background: rgba(167, 139, 250, 0.1);
-            border: 1px dashed var(--accent-purple);
-            padding: 15px;
-            border-radius: 8px;
-            color: var(--accent-cyan);
-            margin-top: 15px;
-            font-weight: 600;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0 12px;
-        }
-
-        th {
-            text-align: left;
-            padding: 10px 25px;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-        }
-
-        tr {
-            background-color: var(--row-bg);
-            transition: all 0.2s ease;
-        }
-
-        tr:hover {
-            background-color: #2d3d5a;
-            transform: translateX(5px);
-        }
-
-        td {
-            padding: 22px 25px;
-        }
-
-        /* Zaokrąglenia i paski */
-        td:first-child { border-radius: 12px 0 0 12px; border-left: 6px solid var(--accent-purple); }
-        td:last-child { border-radius: 0 12px 12px 0; }
-
-        /* Wyróżnienie kolumny ETAP */
-        .col-etap {
-            background-color: var(--etap-bg);
-            text-align: center;
-            width: 180px;
-        }
-
-        .week-no {
-            font-size: 1.8rem; /* Powiększony numer tygodnia */
-            font-weight: 800;
-            color: var(--accent-purple);
-            display: block;
-            line-height: 1;
-        }
-
-        .etap-label {
-            font-size: 1.1rem; /* Powiększona nazwa etapu */
-            font-weight: 700;
-            color: var(--accent-cyan);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .topic {
-            display: block;
-            font-weight: 700;
-            font-size: 1.25rem;
-            margin-bottom: 4px;
-            color: #fff;
-        }
-
-        .desc {
-            color: var(--text-dim);
-            font-size: 0.95rem;
-            display: block;
-        }
-
-        .no-print { margin-top: 30px; font-size: 0.8rem; color: var(--text-dim); text-align: center; }
     </style>
 </head>
 <body>
@@ -132,125 +53,88 @@
 <div class="container">
     <header>
         <h1>Architekt Przedsiębiorczy</h1>
-        <div class="cta-box">13 kroków od studenta do rynkowego gracza 🚀</div>
+        <div class="cta-box">Kliknij w tydzień, aby rozwinąć bazę wiedzy 📚</div>
     </header>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Tydzień</th>
-                <th style="text-align: center;">Etap</th>
-                <th>Temat i cel biznesowy</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><span class="week-no">01</span></td>
-                <td class="col-etap"><span class="etap-label">Fundamenty</span></td>
-                <td>
-                    <span class="topic">Audyt Wartości Rynkowej</span>
-                    <span class="desc">Analiza portfolio pod kątem potrzeb klienta. Co w Twojej pracy realnie generuje zysk?</span>
-                </td>
-            </tr>
-            <tr>
-                <td><span class="week-no">02</span></td>
-                <td class="col-etap"><span class="etap-label">Fundamenty</span></td>
-                <td>
-                    <span class="topic">Selekcja "Killer-Projects"</span>
-                    <span class="desc">Odrzucenie 80% zbędnego materiału. Budowanie marki na 3 najsilniejszych projektach.</span>
-                </td>
-            </tr>
-            <tr>
-                <td><span class="week-no">03</span></td>
-                <td class="col-etap"><span class="etap-label">Mental</span></td>
-                <td>
-                    <span class="topic">Biznesowy Mindset</span>
-                    <span class="desc">Fundamenty działania w biznesie. Praca nad pewnością siebie i proaktywnością.</span>
-                </td>
-            </tr>
-            <tr>
-                <td><span class="week-no">04</span></td>
-                <td class="col-etap"><span class="etap-label">Technologia</span></td>
-                <td>
-                    <span class="topic">Strona WWW bez kodu (AI)</span>
-                    <span class="desc">Rozwiązanie braku wiedzy IT. Tworzenie profesjonalnej wizytówki online w 45 minut.</span>
-                </td>
-            </tr>
-            <tr>
-                <td><span class="week-no">05</span></td>
-                <td class="col-etap"><span class="etap-label">Technologia</span></td>
-                <td>
-                    <span class="topic">AI Prompt Engineering</span>
-                    <span class="desc">Użycie AI do pisania tekstów, które sprzedają Twoją wizję lepiej niż techniczny opis.</span>
-                </td>
-            </tr>
-            <tr>
-                <td><span class="week-no">06</span></td>
-                <td class="col-etap"><span class="etap-label">Technologia</span></td>
-                <td>
-                    <span class="topic">Interaktywność "Low-effort"</span>
-                    <span class="desc">Osadzanie modeli 3D i animacji procesu na stronie dla efektu "wow".</span>
-                </td>
-            </tr>
-            <tr>
-                <td><span class="week-no">07</span></td>
-                <td class="col-etap"><span class="etap-label">Komunikacja</span></td>
-                <td>
-                    <span class="topic">The Hook (3 sekundy)</span>
-                    <span class="desc">Zatrzymanie uwagi klienta w czasie jednego scrolla. Twoje pierwsze zdanie.</span>
-                </td>
-            </tr>
-            <tr>
-                <td><span class="week-no">08</span></td>
-                <td class="col-etap"><span class="etap-label">Komunikacja</span></td>
-                <td>
-                    <span class="topic">Elevator Pitch (30 sekund)</span>
-                    <span class="desc">Konkretna odpowiedź na "Czym się zajmujesz?". Eliminacja chaosu i zacinania się.</span>
-                </td>
-            </tr>
-            <tr>
-                <td><span class="week-no">09</span></td>
-                <td class="col-etap"><span class="etap-label">Komunikacja</span></td>
-                <td>
-                    <span class="topic">Prezentacja Biznesowa (3 min)</span>
-                    <span class="desc">Struktura Problem-Rozwiązanie-Zysk. Argumentowanie decyzji projektowych.</span>
-                </td>
-            </tr>
-            <tr>
-                <td><span class="week-no">10</span></td>
-                <td class="col-etap"><span class="etap-label">Warsztat</span></td>
-                <td>
-                    <span class="topic">Graficzny Quick-Fix</span>
-                    <span class="desc">Triki AI i postprodukcji. Ratowanie "plastikowych" wizualizacji w 10 minut.</span>
-                </td>
-            </tr>
-            <tr>
-                <td><span class="week-no">11</span></td>
-                <td class="col-etap"><span class="etap-label">Warsztat</span></td>
-                <td>
-                    <span class="topic">Odporność na Feedback</span>
-                    <span class="desc">Przyjmowanie krytyki i merytoryczna obrona swojej stawki przed "trudnym klientem".</span>
-                </td>
-            </tr>
-            <tr>
-                <td><span class="week-no">12</span></td>
-                <td class="col-etap"><span class="etap-label">Finał</span></td>
-                <td>
-                    <span class="topic">Konsultacje Biznesowe 1:1</span>
-                    <span class="desc">Indywidualne szlifowanie Twojej strony i mowy sprzedażowej przed finałem.</span>
-                </td>
-            </tr>
-            <tr>
-                <td><span class="week-no">13</span></td>
-                <td class="col-etap"><span class="etap-label">Finał</span></td>
-                <td>
-                    <span class="topic">Grand Slam Pitching</span>
-                    <span class="desc">Ostateczny test pewności siebie. Prezentacja przed grupą (3s / 30s / 3min).</span>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <div class="no-print">Wskazówka: Plik zoptymalizowany pod "Drukuj do PDF" dla Twoich studentów.</div>
+    <details>
+        <summary>
+            <span class="week-no">01</span>
+            <div class="etap-col">Fundamenty</div>
+            <div class="title-group">
+                <span class="topic">Audyt Wartości Rynkowej</span>
+            </div>
+        </summary>
+        <div class="content">
+            <span class="desc">Analiza portfolio pod kątem potrzeb klienta. Co w Twojej pracy realnie generuje zysk? [cite: 56, 135]</span>
+            <div class="links-grid">
+                <a href="https://www.youtube.com/results?search_query=architecture+portfolio+value+market" class="link-item">📺 YT: Co chce widzieć pracodawca?</a>
+                <a href="https://www.youtube.com/results?search_query=architectural+branding+basics" class="link-item">📺 YT: Budowanie marki od zera</a>
+                <a href="https://archisoup.com/architecture-portfolio-guide" class="link-item">🌐 Artykuł: Przewodnik po wartości portfolio</a>
+                <a href="https://open.spotify.com/search/architecture%20business" class="link-item">🎙️ Spotify: Biznes w Architekturze</a>
+            </div>
+        </div>
+    </details>
+
+    <details>
+        <summary>
+            <span class="week-no">03</span>
+            <div class="etap-col">Mental</div>
+            <div class="title-group">
+                <span class="topic">Biznesowy Mindset</span>
+            </div>
+        </summary>
+        <div class="content">
+            <span class="desc">Fundamenty działania w biznesie. Praca nad pewnością siebie i proaktywnością[cite: 28, 137, 222].</span>
+            <div class="links-grid">
+                <a href="https://www.youtube.com/results?search_query=growth+mindset+for+architects" class="link-item">📺 YT: Mindset w zawodach kreatywnych</a>
+                <a href="https://www.youtube.com/results?search_query=overcoming+imposter+syndrome+creative" class="link-item">📺 YT: Jak pokonać syndrom oszusta?</a>
+                <a href="https://jamesclear.com/identity-votes" class="link-item">🌐 Artykuł: Budowanie nawyków pewności</a>
+                <a href="https://open.spotify.com/show/2v9S16Srk4S7pD5u9p0Z5m" class="link-item">🎙️ Spotify: Podcast o psychologii biznesu</a>
+            </div>
+        </div>
+    </details>
+
+    <details>
+        <summary>
+            <span class="week-no">04</span>
+            <div class="etap-col">Technologia</div>
+            <div class="title-group">
+                <span class="topic">Strona WWW bez kodu (AI)</span>
+            </div>
+        </summary>
+        <div class="content">
+            <span class="desc">Rozwiązanie braku wiedzy IT (problem 80% grupy [cite: 87]). Tworzenie wizytówki w 45 minut.</span>
+            <div class="links-grid">
+                <a href="https://www.youtube.com/results?search_query=framer+ai+portfolio+tutorial" class="link-item">📺 YT: Framer AI w 10 minut</a>
+                <a href="https://www.youtube.com/results?search_query=hostinger+ai+website+builder" class="link-item">📺 YT: Kreatory stron AI</a>
+                <a href="https://www.framer.com/ai/" class="link-item">🌐 Narzędzie: Framer AI Generator</a>
+                <a href="https://open.spotify.com/search/ai%20for%20creatives" class="link-item">🎙️ Spotify: AI w pracy twórczej</a>
+            </div>
+        </div>
+    </details>
+
+    <details>
+        <summary>
+            <span class="week-no">08</span>
+            <div class="etap-col">Komunikacja</div>
+            <div class="title-group">
+                <span class="topic">Elevator Pitch (30 sekund)</span>
+            </div>
+        </summary>
+        <div class="content">
+            <span class="desc">Konkretna odpowiedź na "Czym się zajmujesz?". Eliminacja chaosu i zacinania się[cite: 24, 27].</span>
+            <div class="links-grid">
+                <a href="https://www.youtube.com/results?search_query=perfect+elevator+pitch+examples" class="link-item">📺 YT: Perfekcyjne 30 sekund</a>
+                <a href="https://www.youtube.com/results?search_query=public+speaking+tips+for+architects" class="link-item">📺 YT: Mowa ciała w prezentacji</a>
+                <a href="https://hbr.org/2018/01/how-to-give-a-killer-presentation" class="link-item">🌐 Artykuł: HBR - Jak prezentować idee</a>
+                <a href="https://open.spotify.com/show/01u79Ym3Y0pU8vD84e27o6" class="link-item">🎙️ Spotify: Sztuka komunikacji</a>
+            </div>
+        </div>
+    </details>
+
+    <div style="text-align: center; margin-top: 30px; opacity: 0.6; font-size: 0.9rem;">
+        Powyższe linki prowadzą do wyników wyszukiwania i materiałów wspierających dany tydzień zajęć.
+    </div>
 </div>
 
 </body>
