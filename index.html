@@ -2,32 +2,25 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Architekt Przedsiębiorczy | Harmonogram Zajęć</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Architekt Przedsiębiorczy | Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #673ab7; /* Purpura z raportu [cite: 3, 32] */
-            --primary-light: #ede7f6;
-            --accent: #ff4081;
-            --text-dark: #2d3436;
-            --text-light: #636e72;
-            --bg: #f9f9fb;
-            --white: #ffffff;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --accent-purple: #8b5cf6;
+            --accent-cyan: #06b6d4;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
-            color: var(--text-dark);
-            line-height: 1.6;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin: 0;
             padding: 40px 20px;
+            line-height: 1.6;
         }
 
         .container {
@@ -37,96 +30,67 @@
 
         header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
 
         header h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: -1px;
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--accent-purple), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 10px;
+            letter-spacing: -2px;
         }
 
-        header p {
-            color: var(--text-light);
-            font-size: 1.1rem;
-        }
-
-        .card {
-            background: var(--white);
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            overflow: hidden;
-            border: 1px solid rgba(0,0,0,0.05);
+        .cta-box {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(6, 182, 212, 0.1));
+            border: 1px solid var(--accent-purple);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 40px;
         }
 
         table {
             width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-        }
-
-        thead {
-            background-color: var(--primary);
-            color: var(--white);
+            border-collapse: separate;
+            border-spacing: 0 10px;
         }
 
         th {
-            padding: 20px;
-            font-weight: 600;
+            text-align: left;
+            padding: 15px 20px;
+            color: var(--accent-cyan);
             text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
         }
 
-        td {
-            padding: 18px 20px;
-            border-bottom: 1px solid #f1f1f1;
-        }
-
-        tr:last-child td {
-            border-bottom: none;
+        tr {
+            background-color: var(--card-bg);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         tr:hover {
-            background-color: var(--primary-light);
-            transition: background 0.3s ease;
+            transform: scale(1.01);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            background-color: #27354d;
         }
 
-        .week-no {
-            font-weight: 700;
-            color: var(--primary);
-            width: 100px;
+        td {
+            padding: 20px;
         }
 
-        .tag {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            background: var(--primary-light);
-            color: var(--primary);
-        }
+        td:first-child { border-radius: 12px 0 0 12px; border-left: 4px solid var(--accent-purple); }
+        td:last-child { border-radius: 0 12px 12px 0; }
 
-        .topic {
-            font-weight: 600;
-            display: block;
-            margin-bottom: 4px;
-        }
+        .week { font-weight: 800; color: var(--accent-purple); font-size: 1.2rem; }
+        .tag { font-size: 0.7rem; color: var(--accent-cyan); border: 1px solid var(--accent-cyan); padding: 2px 8px; border-radius: 4px; }
+        .topic { display: block; font-weight: 600; margin-bottom: 5px; font-size: 1.1rem; }
+        .desc { color: var(--text-dim); font-size: 0.9rem; }
 
-        .goal {
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-
-        /* Responsywność */
-        @media (max-width: 768px) {
-            th:nth-child(2), td:nth-child(2) { display: none; }
-            header h1 { font-size: 1.8rem; }
-        }
+        @media print { body { background: white; color: black; } .container { box-shadow: none; } }
     </style>
 </head>
 <body>
@@ -134,126 +98,87 @@
 <div class="container">
     <header>
         <h1>Architekt Przedsiębiorczy</h1>
-        <p>Program 13 spotkań: Od paraliżującego stresu do pewności w biznesie</p>
+        <div class="cta-box">
+            Gotowy na przełom? Budujemy Twoją markę w 13 tygodni. 🚀
+        </div>
     </header>
 
-    <div class="card">
-        <table>
-            <thead>
-                <tr>
-                    <th>Tydzień</th>
-                    <th>Moduł</th>
-                    <th>Temat i Cel biznesowy</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="week-no">01</td>
-                    <td><span class="tag">Fundamenty</span></td>
-                    <td>
-                        <span class="topic">Audyt Wartości Rynkowej</span>
-                        <span class="goal">Analiza prac pod kątem tego, co realnie interesuje klienta, a nie tylko uczelnię.</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="week-no">02</td>
-                    <td><span class="tag">Fundamenty</span></td>
-                    <td>
-                        <span class="topic">Selekcja "Killer-Projects"</span>
-                        <span class="goal">Warsztat odrzucania 80% zbędnego materiału. Wybór prac definiujących markę[cite: 146, 150].</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="week-no">03</td>
-                    <td><span class="tag">Mental</span></td>
-                    <td>
-                        <span class="topic">Biznesowy Mindset</span>
-                        <span class="goal">Budowanie pewności siebie i zamiana strachu przed krytyką w ciekawość biznesową[cite: 24, 28].</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="week-no">04</td>
-                    <td><span class="tag">Technologia</span></td>
-                    <td>
-                        <span class="topic">Strona WWW bez kodu (AI)</span>
-                        <span class="goal">Tworzenie wizytówki online w 45 min (rozwiązanie dla 80% osób bez IT ).</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="week-no">05</td>
-                    <td><span class="tag">Technologia</span></td>
-                    <td>
-                        <span class="topic">AI Prompt Engineering</span>
-                        <span class="goal">Generowanie opisów projektów, które „sprzedają” wizję lepiej niż suchy tekst.</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="week-no">06</td>
-                    <td><span class="tag">Technologia</span></td>
-                    <td>
-                        <span class="topic">Interaktywność "Low-effort"</span>
-                        <span class="goal">Osadzanie modeli 3D i animacji bez znajomości programowania[cite: 171].</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="week-no">07</td>
-                    <td><span class="tag">Komunikacja</span></td>
-                    <td>
-                        <span class="topic">The Hook (3 sekundy)</span>
-                        <span class="goal">Jak zatrzymać odbiorcę przy Twoim portfolio w czasie jednego "scrolla".</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="week-no">08</td>
-                    <td><span class="tag">Komunikacja</span></td>
-                    <td>
-                        <span class="topic">Elevator Pitch (30 sekund)</span>
-                        <span class="goal">Trening zwięzłości i eliminacja chaosu w wypowiedzi[cite: 24, 29].</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="week-no">09</td>
-                    <td><span class="tag">Komunikacja</span></td>
-                    <td>
-                        <span class="topic">Prezentacja Biznesowa (3 min)</span>
-                        <span class="goal">Struktura „Problem – Rozwiązanie – Korzyść”. Argumentowanie decyzji projektowych.</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="week-no">10</td>
-                    <td><span class="tag">Warsztat</span></td>
-                    <td>
-                        <span class="topic">Graficzny Quick-Fix</span>
-                        <span class="goal">Triki AI i postprodukcji. Ratowanie "plastikowych" wizualizacji.</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="week-no">11</td>
-                    <td><span class="tag">Warsztat</span></td>
-                    <td>
-                        <span class="topic">Odporność na Feedback</span>
-                        <span class="goal">Przyjmowanie uwag i merytoryczna obrona swojej wizji bez stresu[cite: 195, 223].</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="week-no">12</td>
-                    <td><span class="tag">Finał</span></td>
-                    <td>
-                        <span class="topic">Konsultacje Biznesowe 1:1</span>
-                        <span class="goal">Indywidualne szlifowanie narzędzi sprzedaży i mowy przed finałem[cite: 222].</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="week-no">13</td>
-                    <td><span class="tag">Finał</span></td>
-                    <td>
-                        <span class="topic">Grand Slam Pitching</span>
-                        <span class="goal">Prezentacja strony i trening pitchów – ostateczny test pewności siebie.</span>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Tydzień</th>
+                <th>Etap</th>
+                <th>Cel i Wyzwanie</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="week">01</td>
+                <td><span class="tag">Strategia</span></td>
+                <td><span class="topic">Audyt Wartości Rynkowej</span><span class="desc">Co realnie kupuje klient? [cite: 135, 142]</span></td>
+            </tr>
+            <tr>
+                <td class="week">02</td>
+                <td><span class="tag">Strategia</span></td>
+                <td><span class="topic">Selekcja "Killer-Projects"</span><span class="desc">Wybór 3 prac, które definiują Twoją karierę[cite: 56, 146].</span></td>
+            </tr>
+            <tr>
+                <td class="week">03</td>
+                <td><span class="tag">Mental</span></td>
+                <td><span class="topic">Biznesowy Mindset</span><span class="desc">Fundamenty pewności siebie i odwagi biznesowej[cite: 28, 137].</span></td>
+            </tr>
+            <tr>
+                <td class="week">04</td>
+                <td><span class="tag">Tech</span></td>
+                <td><span class="topic">Własna Strona AI</span><span class="desc">Portfolio online w 45 minut bez linijki kodu.</span></td>
+            </tr>
+            <tr>
+                <td class="week">05</td>
+                <td><span class="tag">Tech</span></td>
+                <td><span class="topic">Prompt Engineering</span><span class="desc">Użycie AI do tworzenia tekstów, które sprzedają[cite: 137, 141].</span></td>
+            </tr>
+            <tr>
+                <td class="week">06</td>
+                <td><span class="tag">Tech</span></td>
+                <td><span class="topic">Interaktywne Modele 3D</span><span class="desc">Modele i animacje, które przyciągają uwagę na stronie[cite: 139, 171].</span></td>
+            </tr>
+            <tr>
+                <td class="week">07</td>
+                <td><span class="tag">Pitch</span></td>
+                <td><span class="topic">The Hook (3s)</span><span class="desc">Zdobądź uwagę klienta w ułamku sekundy[cite: 57, 140].</span></td>
+            </tr>
+            <tr>
+                <td class="week">08</td>
+                <td><span class="tag">Pitch</span></td>
+                <td><span class="topic">Elevator Pitch (30s)</span><span class="desc">Precyzyjna odpowiedź na pytanie "Czym się zajmujesz?"[cite: 27, 29].</span></td>
+            </tr>
+            <tr>
+                <td class="week">09</td>
+                <td><span class="tag">Pitch</span></td>
+                <td><span class="topic">Prezentacja Biznesowa (3min)</span><span class="desc">Jak argumentować decyzje, by zyskać akceptację[cite: 27, 135].</span></td>
+            </tr>
+            <tr>
+                <td class="week">10</td>
+                <td><span class="tag">Warsztat</span></td>
+                <td><span class="topic">Graficzny Quick-Fix</span><span class="desc">Triki AI na profesjonalne wizualizacje w 10 minut[cite: 132, 139].</span></td>
+            </tr>
+            <tr>
+                <td class="week">11</td>
+                <td><span class="tag">Warsztat</span></td>
+                <td><span class="topic">Feedback as a Tool</span><span class="desc">Merytoryczna obrona projektu przed trudnym klientem[cite: 25, 195].</span></td>
+            </tr>
+            <tr>
+                <td class="week">12</td>
+                <td><span class="tag">Finał</span></td>
+                <td><span class="topic">Konsultacje 1:1</span><span class="desc">Szlifowanie detali Twojej mowy i strony[cite: 222].</span></td>
+            </tr>
+            <tr>
+                <td class="week">13</td>
+                <td><span class="tag">Finał</span></td>
+                <td><span class="topic">Grand Slam Pitching</span><span class="desc">Finałowa walka o pewność siebie przed grupą[cite: 24, 28].</span></td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
 </body>
